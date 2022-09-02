@@ -1,34 +1,55 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Stack=createStackNavigator();
-
-const Home = ({navigation}) => { //page 1
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Home Screen</Text>
-      <Button title='Change to page' onPress={() => navigation.push("Page")}/>
-    </View>
-  );
-};
-const Page = ({navigation}) => { //page 2
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Page Screen</Text>
-      <Button title='Change to Home' onPress={() => navigation.pop()}/>
-    </View>
-  );
-};
+import { Ionicons } from "@expo/vector-icons";
+import Account_page from './index/account';
+import Input_page from './index/input';
+import List_page from './index/list';
+const tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer /*Use to pack all the pages which you need to navigate, only one in a project*/> 
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} options={{ headerShown: false } } /*the specific page, give it a name and can easily to change between pages *//> 
-        <Stack.Screen name="Page" component={Page} options={{ headerShown: false } } /*the specific page, give it a name and can easily to change between pages *//> 
-      </Stack.Navigator>
+    <NavigationContainer /*Use to pack all the pages which you need to navigate, only one in a project*/>
+      <tab.Navigator initialRouteName="Input">
+        <tab.Screen name="Input" component={Input_page} options={{
+          headerShown: false,
+          tabBarIcon: (tabInfo) => {
+            return (
+              <Ionicons
+                name="wallet"
+                size={30}
+                color={tabInfo.focused ? "#006600" : "#8e8e93"}
+              />
+            );
+          },
+        }} /*the specific page, give it a name and can easily to change between pages */ />
+        <tab.Screen name="List" component={List_page} options={{
+          headerShown: false,
+          tabBarIcon: (tabInfo) => {
+            return (
+              <Ionicons
+                name="list"
+                size={30}
+                color={tabInfo.focused ? "#006600" : "#8e8e93"}
+              />
+            );
+          },
+        }} /*the specific page, give it a name and can easily to change between pages */ />
+        <tab.Screen name="Account" component={Account_page} options={{
+          headerShown: false,
+          tabBarIcon: (tabInfo) => {
+            return (
+              <Ionicons
+                name="md-person-circle-outline"
+                size={30}
+                color={tabInfo.focused ? "#006600" : "#8e8e93"}
+              />
+            );
+          },
+        }} /*the specific page, give it a name and can easily to change between pages */ />
+      </tab.Navigator>
     </NavigationContainer>
   );
 }
