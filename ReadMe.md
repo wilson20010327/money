@@ -1,12 +1,12 @@
 ---
 title: React Native Day 05
 tags: react native
-description: In a APP it is important to have some page switching, in this example we will talk about bottom navigation.
+description: In a APP it is important to have some page switching, in this example we will talk about simple navigation & bottom navigation.
 ---
 # React Native 05
 [Github](https://github.com/wilson20010327/money)
 
-## Enviornment
+## Simple Navigation Enviornment
 In the path of your project and install react-navigation
 ```shell=
 npm install @react-navigation/native
