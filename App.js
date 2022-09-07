@@ -15,7 +15,7 @@ export default function App() {
       <tab.Navigator initialRouteName="Input">
         <tab.Screen name="Input" component={Input_page} options={{
           headerShown: false,
-          tabBarIcon: (tabInfo) => {
+          tabBarIcon: (tabInfo) => {//to specific the icon show on the bottom 
             return (
               <Ionicons
                 name="wallet"
